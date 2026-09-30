@@ -109,6 +109,15 @@ Problems and solutions
 
 3. A finger moves in reverse: The servo is mounted the other way around. Toggle the (1 - f) inversion for that finger in the payload line.
 
+## Total Cost
+- Arduino Uno = $3.41 USD
+- Servo Motors = $0.89 USD each
+- Cardboard, Straws, Fishing line = $0 USD (all reused)
+
+Total = $7.86 USD
+
+
+
 ## AI assistance disclosure
 1. Gemini helped with the hand detector and camera setup in `hand_tracking_5fingers.py` and helped clean up the code. It did not write the finger-to-servo mapping. The lines that read `detector.fingersUp`, reorder the fingers to match the Arduino order, invert the index and pinky, scale to 0/180 degrees, and build the payload string are my own.
 2. ChatGPT helped improve the Arduino code (`CAMERA_ROBOTHAND.ino`) so the servos only move once all five values have been received in loop().
