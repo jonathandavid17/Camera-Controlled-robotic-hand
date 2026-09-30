@@ -16,20 +16,21 @@ Webcam -> OpenCV + cvzone (MediaPipe) -> Python -> USB serial -> Arduino Uno -> 
 ## B. Serial protocol
 One line per update, at 9600 baud: index,middle,thumb,ring,pinky\n
 Each value is an integer from 0 to 180 (for example `180,0,180,180,0`). The Arduino ignores any line that doesn't contain exactly five values.
+
 The index and pinky values are inverted in software (`1 - f`) because those servos are mounted facing the opposite direction inside the hand's base.
 
 ## C. Hardware
--Arduino Uno:	Connected to the laptop over USB
--5x SG90 micro servos:	One per finger
--Cardboard	Hand: frame
--Plastic drinking straws:	Low-friction guide channels for the tendons
--Fishing line:	Tendons from fingertips to servo horns
--Breadboard and jumper wires	
--4x AA battery holder:	Powers the servos 
--Laptop with a webcam	
+a. Arduino Uno:	Connected to the laptop over USB
+b. 5x SG90 micro servos:	One per finger
+c. Cardboard	Hand: frame
+d. Plastic drinking straws:	Low-friction guide channels for the tendons
+e. Fishing line:	Tendons from fingertips to servo horns
+f. Breadboard and jumper wires	
+g. 4x AA battery holder:	Powers the servos 
+h. Laptop with a webcam	
 
 D. Servo wiring
--Fingers and their respective pins 
+Fingers and their respective pins 
 -Index = 2
 -Middle = 3
 -Thumb = 4
@@ -40,19 +41,19 @@ Connect each servo's signal wire to its pin, and share ground between the servo 
 
 
 ## Prerequisites
-1. Software
--Python 3.13.7
--Arduino IDE (the `Servo` library is included)
--Python packages, pinned in `requirements.txt`: cvzone 2.0.0, MediaPipe 1.0.1, OpenCV (opencv-python and opencv-contrib-python 5.0.0.93), pySerial 3.5
--Tested on Windows 11 with the Arduino on `COM5`
+1) Software
+a. Python 3.13.7
+b. Arduino IDE (the `Servo` library is included)
+c. Python packages, pinned in `requirements.txt`: cvzone 2.0.0, MediaPipe 1.0.1, OpenCV (opencv-python and opencv-contrib-python 5.0.0.93), pySerial 3.5
+d. Tested on Windows 11 with the Arduino on `COM5`
 
-2. Hardware
--Laptop with a webcam
--Arduino Uno and USB cable
--5x SG90 micro servos
--The cardboard hand (cardboard frame, plastic straws, fishing line)
--Breadboard and jumper wires
--4x AA battery holder for servo power
+2) Hardware
+a. Laptop with a webcam
+b. Arduino Uno and USB cable
+c. 5x SG90 micro servos
+d. The cardboard hand (cardboard frame, plastic straws, fishing line)
+e. Breadboard and jumper wires
+f. 4x AA battery holder for servo power
 
 You can run the vision side with only a webcam. The script still tracks your hand and prints the values it would send, even with no Arduino connected.
 
