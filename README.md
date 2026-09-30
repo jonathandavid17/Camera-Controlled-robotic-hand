@@ -47,26 +47,26 @@ Connect each servo's signal wire to its pin, and share ground between the servo 
 
 ## Prerequisites
 A) Software
--Python 3.13.7
+- Python 3.13.7
 
--Arduino IDE (the `Servo` library is included)
+- Arduino IDE (the `Servo` library is included)
 
--Python packages, pinned in `requirements.txt`: cvzone 2.0.0, MediaPipe 1.0.1, OpenCV (opencv-python and opencv-contrib-python 5.0.0.93), pySerial 3.5
+- Python packages, pinned in `requirements.txt`: cvzone 2.0.0, MediaPipe 1.0.1, OpenCV (opencv-python and opencv-contrib-      python 5.0.0.93), pySerial 3.5
 
--Tested on Windows 11 with the Arduino on `COM5`
+- Tested on Windows 11 with the Arduino on `COM5`
 
 B) Hardware
--Laptop with a webcam
+- Laptop with a webcam
 
--Arduino Uno and USB cable
+- Arduino Uno and USB cable
 
--5x SG90 micro servos
+- 5x SG90 micro servos
 
--The cardboard hand (cardboard frame, plastic straws, fishing line)
+- The cardboard hand (cardboard frame, plastic straws, fishing line)
 
--Breadboard and jumper wires
+- Breadboard and jumper wires
 
--4x AA battery holder for servo power
+- 4x AA battery holder for servo power
 
 You can run the vision side with only a webcam. The script still tracks your hand and prints the values it would send, even with no Arduino connected.
 
@@ -94,11 +94,11 @@ You can run the vision side with only a webcam. The script still tracks your han
 
 Run it from the repo folder. The hand tracking model file `hand_landmarker.task` (about 8 MB, Google's MediaPipe Hand Landmarker) is included in the repo, and cvzone looks for it in the folder you run the script from. If it is missing, cvzone downloads it automatically on first run, which needs an internet connection.
 
--Hold one hand in front of the webcam. The hand skeleton is drawn on screen, and the mechanical hand copies your open and closed fingers.
+- Hold one hand in front of the webcam. The hand skeleton is drawn on screen, and the mechanical hand copies your open and closed fingers.
+ 
+- The terminal prints each payload as it is sent.
 
--The terminal prints each payload as it is sent.
-
--Press `q` in the video window to quit. This also closes the serial port so it's free for your next run.
+- Press `q` in the video window to quit. This also closes the serial port so it's free for your next run.
 
 ## Troubleshooting
 Problems and solutions
@@ -112,7 +112,7 @@ Problems and solutions
 ## AI assistance disclosure
 1. Gemini helped with the hand detector and camera setup in `hand_tracking_5fingers.py` and helped clean up the code. It did not write the finger-to-servo mapping. The lines that read `detector.fingersUp`, reorder the fingers to match the Arduino order, invert the index and pinky, scale to 0/180 degrees, and build the payload string are my own.
 2. ChatGPT helped improve the Arduino code (`CAMERA_ROBOTHAND.ino`) so the servos only move once all five values have been received in loop().
-3. Claude (Anthropic) wrote most of this README's text, and I made edits to the formatting and punctuation.
+3. Claude (Anthropic) wrote most of this README's text, and I made edits to the formatting and punctuations.
 4. Gemini helped write most of the script for the presentation video while the ideas came from me.
 
 Credits:
