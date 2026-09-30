@@ -111,10 +111,12 @@ Problems and solutions
 
 ## Total Cost
 - Arduino Uno = $3.41 USD
-- Servo Motors = $0.89 USD each
+- Servo motors = $0.89 USD each
+- Jumper wires = Total $0.56 USD
+- 4x AA battery holder = $0.20 USD
 - Cardboard, Straws, Fishing line = $0 USD (all reused)
 
-Total = $7.86 USD
+Total = $8.62 USD
 
 
 
