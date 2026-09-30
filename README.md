@@ -20,40 +20,45 @@ Each value is an integer from 0 to 180 (for example `180,0,180,180,0`). The Ardu
 The index and pinky values are inverted in software (`1 - f`) because those servos are mounted facing the opposite direction inside the hand's base.
 
 ## C. Hardware
-a. Arduino Uno:	Connected to the laptop over USB
-b. 5x SG90 micro servos:	One per finger
-c. Cardboard	Hand: frame
-d. Plastic drinking straws:	Low-friction guide channels for the tendons
-e. Fishing line:	Tendons from fingertips to servo horns
-f. Breadboard and jumper wires	
-g. 4x AA battery holder:	Powers the servos 
-h. Laptop with a webcam	
+1. Arduino Uno:	Connected to the laptop over USB
+2. 5x SG90 micro servos:	One per finger
+3. Cardboard	Hand: frame
+4. Plastic drinking straws:	Low-friction guide channels for the tendons
+5. Fishing line:	Tendons from fingertips to servo horns
+6. Breadboard and jumper wires	
+7. 4x AA battery holder:	Powers the servos 
+8. Laptop with a webcam	
 
 D. Servo wiring
 Fingers and their respective pins 
--Index = 2
--Middle = 3
--Thumb = 4
--Ring = 5
--Pinky = 6
+
+Index = 2
+
+Middle = 3
+
+Thumb = 4
+
+Ring = 5
+
+Pinky = 6
 
 Connect each servo's signal wire to its pin, and share ground between the servo power supply and the Arduino
 
 
 ## Prerequisites
-1) Software
-a. Python 3.13.7
-b. Arduino IDE (the `Servo` library is included)
-c. Python packages, pinned in `requirements.txt`: cvzone 2.0.0, MediaPipe 1.0.1, OpenCV (opencv-python and opencv-contrib-python 5.0.0.93), pySerial 3.5
-d. Tested on Windows 11 with the Arduino on `COM5`
+A) Software
+1. Python 3.13.7
+2. Arduino IDE (the `Servo` library is included)
+3. Python packages, pinned in `requirements.txt`: cvzone 2.0.0, MediaPipe 1.0.1, OpenCV (opencv-python and opencv-contrib-python 5.0.0.93), pySerial 3.5
+4. Tested on Windows 11 with the Arduino on `COM5`
 
-2) Hardware
-a. Laptop with a webcam
-b. Arduino Uno and USB cable
-c. 5x SG90 micro servos
-d. The cardboard hand (cardboard frame, plastic straws, fishing line)
-e. Breadboard and jumper wires
-f. 4x AA battery holder for servo power
+B) Hardware
+1. Laptop with a webcam
+2. Arduino Uno and USB cable
+3. 5x SG90 micro servos
+4. The cardboard hand (cardboard frame, plastic straws, fishing line)
+5. Breadboard and jumper wires
+6. 4x AA battery holder for servo power
 
 You can run the vision side with only a webcam. The script still tracks your hand and prints the values it would send, even with no Arduino connected.
 
@@ -82,6 +87,7 @@ You can run the vision side with only a webcam. The script still tracks your han
 Run it from the repo folder. The hand tracking model file `hand_landmarker.task` (about 8 MB, Google's MediaPipe Hand Landmarker) is included in the repo, and cvzone looks for it in the folder you run the script from. If it is missing, cvzone downloads it automatically on first run, which needs an internet connection.
 
 -Hold one hand in front of the webcam. The hand skeleton is drawn on screen, and the mechanical hand copies your open and closed fingers.
+
 -The terminal prints each payload as it is sent.
 -Press `q` in the video window to quit. This also closes the serial port so it's free for your next run.
 
@@ -102,8 +108,12 @@ Problems and solutions
 
 Credits:
 Started from `https://youtu.be/jUkD4WNIXuk?si=81Sv4nlCzJH4u16F` for the flex sensor version of the robotic hand.
+
 Hand tracking: cvzone and MediaPipe, with OpenCV.
+
 Hand tracking model: `hand_landmarker.task`, the MediaPipe Hand Landmarker model from Google.
+
 Serial communication: pySerial.
+
 Arduino `Servo` library: `#include <Servo.h>`
 
