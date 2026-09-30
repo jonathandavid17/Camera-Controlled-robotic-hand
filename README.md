@@ -2,9 +2,10 @@
 A low-cost, camera-controlled robotic hand built with cardboard, Arduino, and computer vision.
 
 Built solo for the Featherless.ai hackathon (GIBC V2).
+
 Demo video:
 
-A. How it works
+## A. How it works
 Webcam -> OpenCV + cvzone (MediaPipe) -> Python -> USB serial -> Arduino Uno -> 5 servos -> fishing-line tendons -> cardboard fingers
 1. Python reads frames from the webcam and mirrors them.
 2. cvzone's `HandDetector` (built on MediaPipe) tracks one hand and reports which fingers are up.
@@ -12,45 +13,46 @@ Webcam -> OpenCV + cvzone (MediaPipe) -> Python -> USB serial -> Arduino Uno -> 
 4. The Arduino reads the line, checks that it got all five values, and writes each angle to its servo.
 5. Each servo pulls a fishing-line tendon that runs through a straw guide channel to a fingertip, so the cardboard finger curls.
 
-B. Serial protocol
+## B. Serial protocol
 One line per update, at 9600 baud: index,middle,thumb,ring,pinky\n
 Each value is an integer from 0 to 180 (for example `180,0,180,180,0`). The Arduino ignores any line that doesn't contain exactly five values.
 The index and pinky values are inverted in software (`1 - f`) because those servos are mounted facing the opposite direction inside the hand's base.
 
-C. Hardware
-Arduino Uno:	Connected to the laptop over USB
-5x SG90 micro servos:	One per finger
-Cardboard	Hand: frame
-Plastic drinking straws:	Low-friction guide channels for the tendons
-Fishing line:	Tendons from fingertips to servo horns
-Breadboard and jumper wires	
-4x AA battery holder:	Powers the servos 
-Laptop with a webcam	
+## C. Hardware
+-Arduino Uno:	Connected to the laptop over USB
+-5x SG90 micro servos:	One per finger
+-Cardboard	Hand: frame
+-Plastic drinking straws:	Low-friction guide channels for the tendons
+-Fishing line:	Tendons from fingertips to servo horns
+-Breadboard and jumper wires	
+-4x AA battery holder:	Powers the servos 
+-Laptop with a webcam	
 
 D. Servo wiring
-Fingers and their respective pins 
-Index = 2
-Middle = 3
-Thumb = 4
-Ring = 5
-Pinky = 6
+-Fingers and their respective pins 
+-Index = 2
+-Middle = 3
+-Thumb = 4
+-Ring = 5
+-Pinky = 6
+
 Connect each servo's signal wire to its pin, and share ground between the servo power supply and the Arduino
 
 
-Prerequisites
+## Prerequisites
 1. Software
-Python 3.13.7
-Arduino IDE (the `Servo` library is included)
-Python packages, pinned in `requirements.txt`: cvzone 2.0.0, MediaPipe 1.0.1, OpenCV (opencv-python and opencv-contrib-python 5.0.0.93), pySerial 3.5
-Tested on Windows 11 with the Arduino on `COM5`
+-Python 3.13.7
+-Arduino IDE (the `Servo` library is included)
+-Python packages, pinned in `requirements.txt`: cvzone 2.0.0, MediaPipe 1.0.1, OpenCV (opencv-python and opencv-contrib-python 5.0.0.93), pySerial 3.5
+-Tested on Windows 11 with the Arduino on `COM5`
 
 2. Hardware
-Laptop with a webcam
-Arduino Uno and USB cable
-5x SG90 micro servos
-The cardboard hand (cardboard frame, plastic straws, fishing line)
-Breadboard and jumper wires
-4x AA battery holder for servo power
+-Laptop with a webcam
+-Arduino Uno and USB cable
+-5x SG90 micro servos
+-The cardboard hand (cardboard frame, plastic straws, fishing line)
+-Breadboard and jumper wires
+-4x AA battery holder for servo power
 
 You can run the vision side with only a webcam. The script still tracks your hand and prints the values it would send, even with no Arduino connected.
 
