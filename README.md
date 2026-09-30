@@ -75,7 +75,7 @@ You can run the vision side with only a webcam. The script still tracks your han
 
 1. Clone the repo
 ```
-   git clone https://github.com/YOUR-USERNAME/YOUR-REPO-NAME.git
+   git clone https://github.com/jonathandavid17/Camera-controlled-robotic-hand.git
    cd YOUR-REPO-NAME
 ```
 2. Install the Python packages (a virtual environment is recommended)
