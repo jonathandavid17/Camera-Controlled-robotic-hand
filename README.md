@@ -29,7 +29,7 @@ The index and pinky values are inverted in software (`1 - f`) because those serv
 7. 4x AA battery holder:	Powers the servos 
 8. Laptop with a webcam	
 
-D. Servo wiring
+## D. Servo wiring
 Fingers and their respective pins 
 
 Index = 2
@@ -113,7 +113,7 @@ Problems and solutions
 1. Gemini helped with the hand detector and camera setup in `hand_tracking_5fingers.py` and helped clean up the code. It did not write the finger-to-servo mapping. The lines that read `detector.fingersUp`, reorder the fingers to match the Arduino order, invert the index and pinky, scale to 0/180 degrees, and build the payload string are my own.
 2. ChatGPT helped improve the Arduino code (`CAMERA_ROBOTHAND.ino`) so the servos only move once all five values have been received in loop().
 3. Claude (Anthropic) wrote most of this README's text, and I made edits to the formatting and punctuation.
-4. Gemini also helped write most of the script for the presentation video while the ideas came from me.
+4. Gemini helped write most of the script for the presentation video while the ideas came from me.
 
 Credits:
 Started from `https://youtu.be/jUkD4WNIXuk?si=81Sv4nlCzJH4u16F` for the flex sensor version of the robotic hand.
