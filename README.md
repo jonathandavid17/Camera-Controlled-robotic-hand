@@ -47,18 +47,26 @@ Connect each servo's signal wire to its pin, and share ground between the servo 
 
 ## Prerequisites
 A) Software
-1. Python 3.13.7
-2. Arduino IDE (the `Servo` library is included)
-3. Python packages, pinned in `requirements.txt`: cvzone 2.0.0, MediaPipe 1.0.1, OpenCV (opencv-python and opencv-contrib-python 5.0.0.93), pySerial 3.5
-4. Tested on Windows 11 with the Arduino on `COM5`
+-Python 3.13.7
+
+-Arduino IDE (the `Servo` library is included)
+
+-Python packages, pinned in `requirements.txt`: cvzone 2.0.0, MediaPipe 1.0.1, OpenCV (opencv-python and opencv-contrib-python 5.0.0.93), pySerial 3.5
+
+-Tested on Windows 11 with the Arduino on `COM5`
 
 B) Hardware
-1. Laptop with a webcam
-2. Arduino Uno and USB cable
-3. 5x SG90 micro servos
-4. The cardboard hand (cardboard frame, plastic straws, fishing line)
-5. Breadboard and jumper wires
-6. 4x AA battery holder for servo power
+-Laptop with a webcam
+
+-Arduino Uno and USB cable
+
+-5x SG90 micro servos
+
+-The cardboard hand (cardboard frame, plastic straws, fishing line)
+
+-Breadboard and jumper wires
+
+-4x AA battery holder for servo power
 
 You can run the vision side with only a webcam. The script still tracks your hand and prints the values it would send, even with no Arduino connected.
 
@@ -89,6 +97,7 @@ Run it from the repo folder. The hand tracking model file `hand_landmarker.task`
 -Hold one hand in front of the webcam. The hand skeleton is drawn on screen, and the mechanical hand copies your open and closed fingers.
 
 -The terminal prints each payload as it is sent.
+
 -Press `q` in the video window to quit. This also closes the serial port so it's free for your next run.
 
 ## Troubleshooting
