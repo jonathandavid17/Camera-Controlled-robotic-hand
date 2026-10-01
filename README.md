@@ -3,10 +3,9 @@ A low-cost, camera-controlled robotic hand built with cardboard, Arduino, and co
 
 Built solo for the Featherless.ai hackathon (GIBC V2).
 
-Demo video: https://youtu.be/nmQNqolrdHY
+[Watch demo video + Explanation](https://youtu.be/nmQNqolrdHY)
 
 ## A. How it works
-Webcam -> OpenCV + cvzone (MediaPipe) -> Python -> USB serial -> Arduino Uno -> 5 servos -> fishing-line tendons -> cardboard fingers
 1. Python reads frames from the webcam and mirrors them.
 2. cvzone's HandDetector uses MediaPipe hand tracking to detect a hand and determine the open/closed state of each finger.
 3. The script converts each finger's open/closed state to a servo angle (0 or 180 degrees) and sends all five as one line over serial.
@@ -14,19 +13,22 @@ Webcam -> OpenCV + cvzone (MediaPipe) -> Python -> USB serial -> Arduino Uno -> 
 5. Each servo pulls a fishing-line tendon that runs through a straw guide channel to a fingertip, so the cardboard finger curls.
 
 ## B. Serial protocol
-One line per update, at 9600 baud: index,middle,thumb,ring,pinky\n
+One line per update at 9600 baud:
+
+`index,middle,thumb,ring,pinky\n`
+
 Each value is an integer from 0 to 180 (for example `180,0,180,180,0`). The Arduino ignores any line that doesn't contain exactly five values.
 
 The index and pinky values are inverted in software (`1 - f`) because those servos are mounted facing the opposite direction inside the hand's base.
 
 ## C. Hardware
-1. Arduino Uno:	Connected to the laptop over USB
-2. 5x SG90 micro servos:	One per finger
-3. Cardboard	Hand: frame
-4. Plastic drinking straws:	Low-friction guide channels for the tendons
-5. Fishing line:	Tendons from fingertips to servo horns
+1. Arduino Uno: Connected to the laptop over USB
+2. 5x SG90 micro servos: One per finger
+3. Cardboard hand: Mechanical frame
+4. Plastic drinking straws: guide channels for the tendons
+5. Fishing line: Tendons from fingertips to servo horns
 6. Breadboard and jumper wires	
-7. 4x AA battery holder:	Powers the servos 
+7. 4x AA battery holder: Powers the servos 
 8. Laptop with a webcam	
 
 ## D. Servo wiring
@@ -42,7 +44,8 @@ Ring = 5
 
 Pinky = 6
 
-Connect each servo's signal wire to its pin, and share ground between the servo power supply and the Arduino
+Connect each servo's signal wire to its corresponding Arduino pin. 
+Connect the servo power supply's ground to Arduino GND so they share a common ground.
 
 
 ## Prerequisites
@@ -51,7 +54,7 @@ A) Software
 
 - Arduino IDE (the `Servo` library is included)
 
-- Python packages, pinned in `requirements.txt`: cvzone 2.0.0, MediaPipe 1.0.1, OpenCV (opencv-python and opencv-contrib-      python 5.0.0.93), pySerial 3.5
+- Python packages, pinned in `requirements.txt`: cvzone 2.0.0, MediaPipe 1.0.1, OpenCV (opencv-python and opencv-contrib-python 5.0.0.93), pySerial 3.5
 
 - Tested on Windows 11 with the Arduino on `COM5`
 
@@ -91,9 +94,8 @@ You can run the vision side with only a webcam. The script still tracks your han
 ## Usage
 `python hand_tracking_5fingers.py`
 
-Run it from the repo folder. The hand tracking model file `hand_landmarker.task` (about 8 MB, Google's MediaPipe Hand Landmarker) is included in the repo, and cvzone looks for it in the folder you run the script from. If it is missing, cvzone downloads it automatically on first run, which needs an internet connection.
-
-- Hold one hand in front of the webcam. The hand skeleton is drawn on screen, and the mechanical hand copies your open and closed fingers.
+Run it from the repo folder. The hand tracking model file `hand_landmarker.task` (about 8 MB, Google's MediaPipe Hand Landmarker model) is included in the repository and is required for hand tracking.
+- Hold one hand in front of the webcam. The hand skeleton is drawn on screen, and the mechanical hand reproduces your fingers' open/closed states.
  
 - The terminal prints each payload as it is sent.
 
@@ -102,11 +104,11 @@ Run it from the repo folder. The hand tracking model file `hand_landmarker.task`
 ## Troubleshooting
 Problems and solutions
 
-1. Could not open COM5	Wrong port: board unplugged, or the Serial Monitor is open. Check the port and close the Serial Monitor
+1. Could not open COM5: Port unavailable. The board may be unplugged, the selected COM port may be incorrect, or the Serial Monitor may already be using the port.
 
 2. First commands are ignored: The Arduino resets when the serial connection opens. The script waits 2 seconds for this, so don't remove that delay.
 
-3. A finger moves in reverse: The servo is mounted the other way around. Toggle the (1 - f) inversion for that finger in the payload line.
+3. A finger moves in reverse: The servo is mounted the other way around. Apply or remove the (1 - f) inversion for that finger in the payload mapping.
 
 ## Total Cost
 - Arduino Uno = $3.41 USD
@@ -128,7 +130,7 @@ Excluding Laptop, webcam, and other equipment that are available to me
 4. Gemini helped write most of the script for the presentation video while the ideas came from me.
 
 Credits:
-Started from `https://youtu.be/jUkD4WNIXuk?si=81Sv4nlCzJH4u16F` for the flex sensor version of the robotic hand.
+Started from [video](https://youtu.be/jUkD4WNIXuk?si=81Sv4nlCzJH4u16F) for the flex sensor version of the robotic hand.
 
 Hand tracking: cvzone and MediaPipe, with OpenCV.
 
