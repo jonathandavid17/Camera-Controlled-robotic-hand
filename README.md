@@ -58,7 +58,7 @@ A) Software
 
 - Arduino IDE (the `Servo` library is included)
 
-- Python packages, pinned in `requirements.txt`: cvzone 2.0.0, MediaPipe 1.0.1, OpenCV (opencv-python and opencv-contrib-python 5.0.0.93), pySerial 3.5
+- Python packages, pinned in `requirements.txt`: cvzone 2.0.0, MediaPipe 1.0.1, OpenCV (opencv-python 5.0.0.93), pySerial 3.5
 
 - Tested on Windows 11 with the Arduino on `COM5`
 
