@@ -44,6 +44,8 @@ Ring = 5
 
 Pinky = 6
 
+cvzone reports the fingers as [thumb, index, middle, ring, pinky]; the script reorders them to [index, middle, thumb, ring, pinky] to match the Arduino servo assignments.
+
 Connect each servo's signal wire to its corresponding Arduino pin. 
 Connect the servo power supply's ground to Arduino GND so they share a common ground.
 
