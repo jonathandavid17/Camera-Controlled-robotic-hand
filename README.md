@@ -5,14 +5,14 @@ Built solo for the Featherless.ai hackathon (GIBC V2).
 
 [Watch demo video + Explanation](https://youtu.be/nmQNqolrdHY)
 
-## A. How it works
+## How it works
 1. Python reads frames from the webcam and mirrors them.
 2. cvzone's HandDetector uses MediaPipe hand tracking to detect a hand and determine the open/closed state of each finger.
 3. The script converts each finger's open/closed state to a servo angle (0 or 180 degrees) and sends all five as one line over serial.
 4. The Arduino reads the line, checks that it got all five values, and writes each angle to its servo.
 5. Each servo pulls a fishing-line tendon that runs through straw guides to a fingertip, so the cardboard finger curls.
 
-## B. Serial protocol
+## Serial protocol
 One line per update at 9600 baud:
 
 `index,middle,thumb,ring,pinky\n`
@@ -21,7 +21,7 @@ Each value is an integer from 0 to 180 (for example `180,0,180,180,0`). The Ardu
 
 The index and pinky values are inverted in software (`1 - f`) because those servos are mounted facing the opposite direction inside the hand's base.
 
-## C. Hardware
+## Hardware
 1. Arduino Uno: Connected to the laptop over USB
 2. 5x SG90 micro servos: One per finger
 3. Cardboard hand: Mechanical frame
@@ -31,7 +31,7 @@ The index and pinky values are inverted in software (`1 - f`) because those serv
 7. 4x AA battery holder: Powers the servos 
 8. Laptop with a webcam	
 
-## D. Servo wiring
+## Servo wiring
 Fingers and their respective pins 
 
 Index = 2
@@ -48,6 +48,8 @@ cvzone reports the fingers as [thumb, index, middle, ring, pinky]; the script re
 
 Connect each servo's signal wire to its corresponding Arduino pin. 
 Connect the servo power supply's ground to Arduino GND so they share a common ground.
+
+[view the circuit in tinkercad](https://www.tinkercad.com/things/eKE3Kj0RcgY-funky-waasa)
 
 
 ## Prerequisites
@@ -113,13 +115,14 @@ Problems and solutions
 3. A finger moves in reverse: The servo is mounted in the opposite orientation. Apply or remove the `(1 - f)` inversion for that finger in the payload mapping.
 
 ## Total Cost
-- Arduino Uno = $3.41 USD
-- Servo motors (5 × $0.89) = $4.45 USD
-- Jumper wires = $0.56 USD
-- 4x AA battery holder = $0.20 USD
-- Cardboard, Straws, Fishing line = $0 USD (all reused)
-
-Total = $8.62 USD
+| Component | Cost |
+|---|---:|
+| Arduino Uno | $3.41 |
+| 5× SG90 servo motors | $4.45 |
+| Jumper wires | $0.56 |
+| 4× AA battery holder | $0.20 |
+| Cardboard, straws, fishing line | $0.00 |
+| **Total** | **$8.62** |
 
 Excluding the laptop, webcam, and other equipment already available to me.
 
@@ -128,7 +131,7 @@ Excluding the laptop, webcam, and other equipment already available to me.
 ## AI assistance disclosure
 1. Gemini helped with the hand detector and camera setup in `hand_tracking_5fingers.py` and helped clean up the code. It did not write the finger-to-servo mapping. The lines that read `detector.fingersUp`, reorder the fingers to match the Arduino order, invert the index and pinky, scale to 0/180 degrees, and build the payload string are my own.
 2. ChatGPT helped improve the Arduino code (`CAMERA_ROBOTHAND.ino`) so the servos only move once all five values have been received in loop().
-3. Claude (Anthropic) wrote most of this README's text, and I made edits to the formatting and punctuations.
+3. Claude (Anthropic) assisted with drafting most of this README. I reviewed and edited the content, formatting, and wording.
 4. Gemini helped write most of the script for the presentation video while the ideas came from me.
 
 Credits: 
