@@ -8,7 +8,7 @@ Demo video: https://youtu.be/nmQNqolrdHY
 ## A. How it works
 Webcam -> OpenCV + cvzone (MediaPipe) -> Python -> USB serial -> Arduino Uno -> 5 servos -> fishing-line tendons -> cardboard fingers
 1. Python reads frames from the webcam and mirrors them.
-2. cvzone's `HandDetector` (built on MediaPipe) tracks one hand and reports which fingers are up.
+2. cvzone's HandDetector uses MediaPipe hand tracking to detect a hand and determine the open/closed state of each finger.
 3. The script converts each finger's open/closed state to a servo angle (0 or 180 degrees) and sends all five as one line over serial.
 4. The Arduino reads the line, checks that it got all five values, and writes each angle to its servo.
 5. Each servo pulls a fishing-line tendon that runs through a straw guide channel to a fingertip, so the cardboard finger curls.
@@ -75,8 +75,7 @@ You can run the vision side with only a webcam. The script still tracks your han
 
 1. Clone the repo
 ```
-   git clone https://github.com/jonathandavid17/Camera-controlled-robotic-hand.git
-   cd YOUR-REPO-NAME
+   git clone https://github.com/jonathandavid17/Camera-controlled-robotic-hand
 ```
 2. Install the Python packages (a virtual environment is recommended)
 ```
@@ -111,12 +110,14 @@ Problems and solutions
 
 ## Total Cost
 - Arduino Uno = $3.41 USD
-- Servo motors = $0.89 USD each
+- Servo motors (5x) = $0.89 USD each
 - Jumper wires = Total $0.56 USD
 - 4x AA battery holder = $0.20 USD
 - Cardboard, Straws, Fishing line = $0 USD (all reused)
 
 Total = $8.62 USD
+
+Excluding Laptop, webcam, and other equipment that are available to me
 
 
 
