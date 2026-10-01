@@ -130,7 +130,6 @@ Excluding the laptop, webcam, and other equipment already available to me.
 4. Gemini helped write most of the script for the presentation video while the ideas came from me.
 
 Credits:
-Started from [video](https://youtu.be/jUkD4WNIXuk?si=81Sv4nlCzJH4u16F) for the flex sensor version of the robotic hand.
 
 Hand tracking: cvzone and MediaPipe, with OpenCV.
 
