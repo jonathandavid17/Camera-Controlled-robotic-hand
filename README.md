@@ -10,7 +10,7 @@ Built solo for the Featherless.ai hackathon (GIBC V2).
 2. cvzone's HandDetector uses MediaPipe hand tracking to detect a hand and determine the open/closed state of each finger.
 3. The script converts each finger's open/closed state to a servo angle (0 or 180 degrees) and sends all five as one line over serial.
 4. The Arduino reads the line, checks that it got all five values, and writes each angle to its servo.
-5. Each servo pulls a fishing-line tendon that runs through a straw guide channel to a fingertip, so the cardboard finger curls.
+5. Each servo pulls a fishing-line tendon that runs through straw guides to a fingertip, so the cardboard finger curls.
 
 ## B. Serial protocol
 One line per update at 9600 baud:
