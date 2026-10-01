@@ -3,7 +3,7 @@ A low-cost, camera-controlled robotic hand built with cardboard, Arduino, and co
 
 Built solo for the Featherless.ai hackathon (GIBC V2).
 
-Demo video:
+Demo video: https://youtu.be/nmQNqolrdHY
 
 ## A. How it works
 Webcam -> OpenCV + cvzone (MediaPipe) -> Python -> USB serial -> Arduino Uno -> 5 servos -> fishing-line tendons -> cardboard fingers
