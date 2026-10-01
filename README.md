@@ -131,7 +131,7 @@ Excluding the laptop, webcam, and other equipment already available to me.
 3. Claude (Anthropic) wrote most of this README's text, and I made edits to the formatting and punctuations.
 4. Gemini helped write most of the script for the presentation video while the ideas came from me.
 
-Credits:
+Credits: 
 
 Hand tracking: cvzone and MediaPipe, with OpenCV.
 
