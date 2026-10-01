@@ -108,18 +108,18 @@ Problems and solutions
 
 2. First commands are ignored: The Arduino resets when the serial connection opens. The script waits 2 seconds for this, so don't remove that delay.
 
-3. A finger moves in reverse: The servo is mounted the other way around. Apply or remove the (1 - f) inversion for that finger in the payload mapping.
+3. 3. A finger moves in reverse: The servo is mounted in the opposite orientation. Apply or remove the `(1 - f)` inversion for that finger in the payload mapping.
 
 ## Total Cost
 - Arduino Uno = $3.41 USD
-- Servo motors (5x) = $0.89 USD each
-- Jumper wires = Total $0.56 USD
+-  Servo motors (5 × $0.89) = $4.45 USD
+- Jumper wires = $0.56 USD
 - 4x AA battery holder = $0.20 USD
 - Cardboard, Straws, Fishing line = $0 USD (all reused)
 
 Total = $8.62 USD
 
-Excluding Laptop, webcam, and other equipment that are available to me
+Excluding the Laptop, webcam, and other equipment already available to me.
 
 
 
